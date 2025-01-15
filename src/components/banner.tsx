@@ -1,4 +1,5 @@
-import styles from "./banner.module.css";
+
+import '../styling/banner.css';
 
 interface BannerProps {
   children: React.ReactNode;
@@ -7,7 +8,7 @@ interface BannerProps {
 const Banner: React.FC<BannerProps> = ({ children }) => {
   return (
     <div className="banner">
-      <h1 className={styles.logo}>{children}</h1>
+      <h1 className="logo">{children}</h1>
     </div>
   );
 };

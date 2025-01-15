@@ -1,16 +1,6 @@
 {
   "posts": [
     {
-      "id": "c0be",
-      "title": "test",
-      "description": "srsresrser"
-    },
-    {
-      "id": "dd34",
-      "title": "Test",
-      "description": "jkdhfsldf"
-    },
-    {
       "id": "bff5",
       "title": "Hello",
       "description": "Kitty"
@@ -19,11 +9,6 @@
       "id": "e443",
       "title": "Hello",
       "description": "dsf"
-    },
-    {
-      "id": "552a",
-      "title": "ksjhdf",
-      "description": "sdfsf"
     }
   ]
 }

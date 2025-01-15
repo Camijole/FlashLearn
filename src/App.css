@@ -1,120 +1,16 @@
-/* Global Styles */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clean, modern font */
-  background-color: #f4f6f9; /* Light background color */
-  color: #333; /* Text color */
-  margin: 0;
-  padding: 0;
+/* General Reset and Box Sizing */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  
-  /* Flexbox to center everything vertically and horizontally */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Full viewport height */
-  width: 100vw; /* Full viewport width */
 }
 
-/* Banner Styling */
-.banner {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #6c757d;
-  color: white;
-  padding: 10px 20px;
-  font-size: 18px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-
-  /* Center the text inside the banner */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-/* Container for the main content */
-.card-list-container {
-  max-width: 900px;
-  width: 100%; /* Full width to allow responsiveness */
-  margin: 30px;
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #474c44;
+  color: #d5dfbf;
   padding: 20px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
-
-/* Form and card row headings */
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 24px;
-}
-
-h3 {
-  text-align: center;
-  margin-bottom: 15px;
-  font-size: 22px;
-}
-
-/* Table Styling */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-th, td {
-  padding: 12px 15px;
-  text-align: left;
-}
-
-th {
-  background-color: #f0f0f0;
-  color: #333;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-td {
-  background-color: #fff;
-  border-bottom: 1px solid #ddd;
-}
-
-tr:hover td {
-  background-color: #f9f9f9;
-}
-
-table tbody tr:last-child td {
-  border-bottom: none;
-}
-
-/* Create Card Form */
-.create-card-container {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Bigger shadow */
-  margin-bottom: 20px;
-}
-
-/* Form Inputs */
-.form-input {
-  width: 100%; /* Make inputs take full width on small screens */
-  padding: 12px 20px;
-  margin: 10px 0 20px 0;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 16px;
-  background-color: #f7f7f7;
-}
-
-.form-input:focus {
-  outline: none;
-  border-color: #aaa;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  height: 100vh;
 }
 
 /* Button Styling */
@@ -126,135 +22,9 @@ button {
   border-radius: 8px;
   cursor: pointer;
   font-size: 16px;
-  width: 100%; /* Button takes full width on small screens */
-  margin-top: 10px;
   transition: background-color 0.3s ease;
 }
 
 button:hover {
   background-color: #5a636b;
-}
-
-button:disabled {
-  background-color: #ddd;
-  cursor: not-allowed;
-}
-
-/* Error Message */
-.error-message {
-  color: red;
-  font-size: 14px;
-  text-align: center;
-}
-
-/* Card Row Styling */
-.card-row {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin-bottom: 15px;
-  padding: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative; /* So the delete button can be positioned inside */
-}
-
-.card-row:hover {
-  background-color: #f9f9f9;  /* Lighten the background when hovered */
-}
-
-.card-row h3 {
-  font-size: 18px;
-  margin: 0;
-}
-
-.card-row p {
-  font-size: 14px;
-  color: #555;
-}
-
-.card-row .card-actions {
-  display: flex;
-  gap: 10px;
-}
-
-.card-row .card-actions button {
-  background-color: #28a745;
-  padding: 8px 12px;
-  border-radius: 5px;
-  font-size: 14px;
-}
-
-.card-row .card-actions button:hover {
-  background-color: #218838;
-}
-
-.card-row .card-actions button.delete {
-  background-color: #dc3545;
-}
-
-.card-row .card-actions button.delete:hover {
-  background-color: #c82333;
-}
-
-/* Styling the delete button */
-.delete-btn {
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  background-color: #dc3545;
-  color: white;
-  border: none;
-  border-radius: 5px; /* Slightly rounded corners */
-  padding: 6px 12px; /* Adjust padding for a rectangular button */
-  cursor: pointer;
-  font-size: 14px; /* Adjusted font size */
-  display: none; /* Hide the button by default */
-}
-
-.card-row:hover .delete-btn {
-  display: block;  /* Show the button when the card is hovered */
-}
-
-.delete-btn:hover {
-  background-color: #c82333; /* Darker red when hovered */
-}
-
-
-/* Mobile First Media Queries */
-@media (max-width: 768px) {
-  /* Card List Container */
-  .card-list-container {
-    margin: 20px;
-    padding: 15px; /* Reduced padding for smaller screens */
-  }
-
-  /* Banner */
-  .banner {
-    font-size: 16px; /* Make banner font smaller for small screens */
-    padding: 8px 16px; /* Reduced padding */
-  }
-
-  /* Card Row */
-  .card-row {
-    flex-direction: column; /* Stack elements vertically */
-    align-items: flex-start;
-    padding: 10px;
-  }
-
-  /* Adjust the font sizes for cards */
-  .card-row h3 {
-    font-size: 16px;
-  }
-
-  .card-row p {
-    font-size: 12px;
-  }
-
-  /* Input Fields and Buttons */
-  .form-input, button {
-    font-size: 14px;
-  }
 }

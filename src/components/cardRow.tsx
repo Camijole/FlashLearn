@@ -1,4 +1,17 @@
-const CardRow = ({ card, onDelete }) => {
+import React from 'react';
+
+interface Card {
+  id: string;
+  title: string;
+  description: string;
+}
+
+interface CardRowProps {
+  card: Card;
+  onDelete: (id: string) => void;
+}
+
+const CardRow: React.FC<CardRowProps> = ({ card, onDelete }) => {
   const handleDelete = async () => {
     try {
       // Send DELETE request to the backend
