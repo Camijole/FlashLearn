@@ -1,14 +1,6 @@
 import React from 'react';
 import '../styling/checkbox.css';
-
-interface TaskProps {
-  id: number;
-  title: string;
-  description: string;
-  completed: boolean;
-  onToggle: (id: number) => void;
-  onEdit: (id: number) => void;
-}
+import { TaskProps } from '../types/taskProps';
 
 const Task: React.FC<TaskProps> = ({ id, title, description, completed, onToggle, onEdit }) => {
   return (

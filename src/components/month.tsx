@@ -1,12 +1,6 @@
 import React from 'react';
 import Tasks from './tasks'; // Import the Tasks component
-
-interface MonthProps {
-  month: string;
-  index: number;
-  isExpanded: boolean;
-  toggleMonth: (index: number) => void;
-}
+import { MonthProps } from '../types/MonthProps';
 
 const Month: React.FC<MonthProps> = ({ month, index, isExpanded, toggleMonth }) => {
   return (

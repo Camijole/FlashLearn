@@ -4,13 +4,7 @@ import CreateTaskForm from "./createTaskForm";
 import FloatingButton from "./floatingButton";
 import "../styling/tasks.css";
 import "../styling/floatingButton.css";
-
-interface TaskData {
-  id: number;
-  title: string;
-  description: string;
-  completed: boolean;
-}
+import { TaskData } from "../types/taskData";
 
 const Tasks: React.FC = () => {
   const [tasks, setTasks] = useState<TaskData[]>([]);
