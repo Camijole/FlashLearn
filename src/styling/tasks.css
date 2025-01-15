@@ -5,31 +5,34 @@
 
 .task-item {
   display: flex;
-  align-items: center;
-  padding: 8px;
+  align-items: flex-start; /* Align items at the start */
+  padding: 10px;
   border-bottom: 1px solid #ccc;
 }
 
 .task-checkbox {
+  flex-shrink: 0; /* Prevent checkbox from shrinking */
+  width: 20px; /* Fixed width to maintain size */
+  height: 20px;
   margin-right: 10px;
 }
 
-.task-text {
-  flex-grow: 1;
-  margin-left: 10px;
-}
-
 .task-content {
-  display: flex;
-  flex-direction: column;
+  flex-grow: 1;
+  margin-right: 10px;
 }
 
-.task-text.completed {
-  text-decoration: line-through;
-  color: #aaa;
+.task-title {
+  font-weight: bold;
+  display: block;
+}
+
+.task-description {
+  display: block;
 }
 
 .edit-button {
+  margin-left: auto;
   background: none;
   border: none;
   cursor: pointer;

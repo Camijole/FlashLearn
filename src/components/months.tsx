@@ -1,35 +1,37 @@
 import React, { useState } from 'react';
-import Tasks from './tasks'; // Import the Tasks component
-import '../styling/months.css'; // Import the CSS file for Months
+import { monthsByLanguage } from '../constants/months';
+import '../styling/months.css';
+import Month from './month';
+import '../styling/language.css';
 
 const Months: React.FC = () => {
   const [expandedMonth, setExpandedMonth] = useState<number | null>(null);
-
-  const months = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'
-  ];
+  const [language, setLanguage] = useState<'en' | 'sv'>('en'); // Default language
 
   const toggleMonth = (index: number) => {
     setExpandedMonth(expandedMonth === index ? null : index);
   };
 
+  const handleLanguageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setLanguage(event.target.value as 'en' | 'sv');
+  };
+
   return (
     <div className="months-container">
-      {months.map((month, index) => (
-        <div key={index} className={`month-item ${expandedMonth === index ? 'expanded' : ''}`}>
-          <div className="month-header" onClick={() => toggleMonth(index)}>
-            <span className={`arrow ${expandedMonth === index ? 'down' : 'right'}`}></span>
-            <span className={`month-title ${expandedMonth === index ? 'bold' : ''}`}>
-              {month}
-            </span>
-          </div>
-          {expandedMonth === index && (
-            <div className="month-details">
-              <Tasks /> {/* Render the Tasks component */}
-            </div>
-          )}
-        </div>
+      <div className="language-selector">
+        <select id="language" value={language} onChange={handleLanguageChange}>
+          <option value="en">English</option>
+          <option value="sv">Swedish</option>
+        </select>
+      </div>
+      {monthsByLanguage[language].map((month, index) => (
+        <Month
+          key={index}
+          month={month}
+          index={index}
+          isExpanded={expandedMonth === index}
+          toggleMonth={toggleMonth}
+        />
       ))}
     </div>
   );

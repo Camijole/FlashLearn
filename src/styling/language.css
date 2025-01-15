@@ -1,0 +1,18 @@
+.language-selector select {
+      font-size: 16px; /* Make the dropdown text larger */
+      padding: 4px; 
+      background-color: #3d483d; /* Dark green background */
+      color: inherit; /* Inherit the text color from the task description */
+      border: none; /* Optional: remove border for a cleaner look */
+      border-radius: 4px; /* Optional: slight rounding for better aesthetics */
+    }
+    
+    .language-selector select:focus {
+      outline: none; /* Remove default focus outline */
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add a subtle focus shadow */
+    }
+    
+    .language-selector {
+      color: #aaa; /* Assuming task description color is #aaa */
+    }
+    
