@@ -1,39 +1,49 @@
-import React, { useState } from 'react';
-import { monthsByLanguage } from '../constants/months';
-import '../styling/months.css';
-import Month from './month';
-import '../styling/language.css';
+import React, { useState } from "react";
+import { monthsByLanguage } from "../constants/months";
+import "../styling/months.css";
+import Month from "./month";
+import "../styling/language.css";
+import FloatingButton from "./floatingButton";
+import CreateTaskForm from "./createTaskForm";
 
-const Months: React.FC = () => {
+interface language {
+  language: "en" | "sv";
+}
+
+const Months: React.FC<language> = (props) => {
   const [expandedMonth, setExpandedMonth] = useState<number | null>(null);
-  const [language, setLanguage] = useState<'en' | 'sv'>('en'); // Default language
-
+  const [showMonths, setShowMonths] = useState(true);
   const toggleMonth = (index: number) => {
     setExpandedMonth(expandedMonth === index ? null : index);
   };
 
-  const handleLanguageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setLanguage(event.target.value as 'en' | 'sv');
+  const addTask = (title: string, description: string) => {
+    console.log("Task added:", { title, description });
+    setShowMonths(true);
   };
 
   return (
-    <div className="months-container">
-      <div className="language-selector">
-        <select id="language" value={language} onChange={handleLanguageChange}>
-          <option value="en">English</option>
-          <option value="sv">Swedish</option>
-        </select>
+    <>
+      <div className="months-container">
+        {showMonths ? (
+          monthsByLanguage[props.language].map((month, index) => (
+            <Month
+              key={index}
+              month={month}
+              index={index}
+              isExpanded={expandedMonth === index}
+              toggleMonth={toggleMonth}
+            />
+          ))
+        ) : (
+          <CreateTaskForm
+            onAddTask={addTask}
+            onCancel={() => setShowMonths(true)}
+          />
+        )}
       </div>
-      {monthsByLanguage[language].map((month, index) => (
-        <Month
-          key={index}
-          month={month}
-          index={index}
-          isExpanded={expandedMonth === index}
-          toggleMonth={toggleMonth}
-        />
-      ))}
-    </div>
+      {showMonths && <FloatingButton onClick={() => setShowMonths(false)} />}
+    </>
   );
 };
 

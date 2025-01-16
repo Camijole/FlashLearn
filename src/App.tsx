@@ -1,33 +1,26 @@
-import React, { useState } from 'react';
-import './App.css';
-import CreateTaskForm from './components/createTaskForm';
-import FloatingButton from './components/floatingButton';
-import Months from './components/months';
+import React, { useState } from "react";
+import "./App.css";
+import Months from "./components/months";
 
 const App: React.FC = () => {
-  const [showForm, setShowForm] = useState(false);
+  const [language, setLanguage] = useState<"en" | "sv">("en"); // Default language
 
-  const handleShowForm = () => {
-    setShowForm(true);
-  };
-
-  const handleHideForm = () => {
-    setShowForm(false);
-  };
-
-  const addTask = (title: string, description: string) => {
-    console.log('Task added:', { title, description });
-    setShowForm(false);
+  const handleLanguageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setLanguage(event.target.value as "en" | "sv");
   };
 
   return (
     <div className="app-container">
-      {showForm ? (
-        <CreateTaskForm onAddTask={addTask} onCancel={handleHideForm} />
-      ) : (
-        <Months />
-      )}
-      {!showForm && <FloatingButton onClick={handleShowForm} />}
+      <div className="language-selector">
+        <select
+          id="language"
+          value={language}
+          onChange={handleLanguageChange}>
+          <option value="en">English</option>
+          <option value="sv">Swedish</option>
+        </select>
+      </div>
+      <Months language={language} />
     </div>
   );
 };

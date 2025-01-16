@@ -1,23 +1,25 @@
 import React from 'react';
 import '../styling/checkbox.css';
-import { TaskProps } from '../types/taskProps';
+import { TaskData } from './tasks';
 
-const Task: React.FC<TaskProps> = ({ id, title, description, completed, onToggle, onEdit }) => {
+interface TaskProps {
+  task: TaskData
+  onToggle: (id: number) => void;
+}
+
+const Task: React.FC<TaskProps> = ({ task, onToggle }) => {
   return (
     <div className="task-item">
       <input
         type="checkbox"
-        checked={completed}
-        onChange={() => onToggle(id)}
+        checked={task.completed}
+        onChange={() => onToggle(task.id)}
         className="custom-checkbox task-checkbox"
       />
       <div className="task-content">
-        <strong className="task-title">{title}</strong>
-        <span className="task-description">{description}</span>
+        <strong className="task-title">{task.title}</strong>
+        <span className="task-description">{task.description}</span>
       </div>
-      <button className="edit-button" onClick={() => onEdit(id)}>
-        <i className="fas fa-edit"></i>
-      </button>
     </div>
   );
 };
